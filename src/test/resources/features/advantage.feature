@@ -1,4 +1,4 @@
-#autor: jgiraldog
+#autor: Juan Camilo Giraldo Gallego
 Feature: page advantage
   As a user, I want to authenticate, register forms and add a product.
 
@@ -11,6 +11,13 @@ Feature: page advantage
       | userName  | pass    |
       | camilo123 | Juan123 |
     Then he should see the user authentication
+
+
+  Scenario: validate authentication in advantage failed
+    When he user enter the datas
+      | userName  | pass    |
+      | camilo123 | Juan12 |
+    Then he should see the failed message Incorrect user name or password.
 
 
   Scenario: register of contact form

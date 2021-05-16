@@ -25,7 +25,7 @@ public class Contact implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                WaitUntil.the(BTN_CONTACT_US, WebElementStateMatchers.isVisible()).forNoMoreThan(60).seconds(),
+                WaitUntil.the(BTN_CONTACT_US, WebElementStateMatchers.isVisible()).forNoMoreThan(20).seconds(),
                 Scroll.to(CATEGORY),
                 SelectFromOptions.byVisibleText(dataLists.get(CERO).getCategory()).from(CATEGORY),
                 SelectFromOptions.byVisibleText(dataLists.get(CERO).getProduct()).from(PRODUCT),

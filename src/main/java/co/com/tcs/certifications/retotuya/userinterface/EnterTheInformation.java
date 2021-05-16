@@ -16,4 +16,7 @@ public class EnterTheInformation extends PageObject {
     public static final Target BTN_LOGIN= Target.the("Btn login")
             .located(By.xpath("//button[@id='sign_in_btnundefined']"));
 
+    public static final Target QUESTIONS_LOGIN= Target.the("Btn login")
+            .located(By.xpath("//label[contains(text(),'Incorrect user name or password.')]"));
+
 }

@@ -12,7 +12,7 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.SelectFromOptions;
 import net.serenitybdd.screenplay.annotations.Subject;
-import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.*;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 
 import java.util.HashMap;
@@ -36,9 +36,9 @@ public class Register implements Task {
         String userName = dataRegisterList.get(CERO).getUserName()+ String.valueOf(name);
         Map<String, Object> userCreate = new HashMap<>();
         actor.attemptsTo(
-                WaitUntil.the(BTN_USER, WebElementStateMatchers.isVisible()).forNoMoreThan(30).seconds(),
+                WaitUntil.the(BTN_USER, isVisible()).forNoMoreThan(20).seconds(),
                 Click.on(BTN_USER),
-                WaitUntil.the(LOGIN_MODAL, WebElementStateMatchers.isVisible()).forNoMoreThan(30).seconds(),
+                WaitUntil.the(CREATE_NEW_USER, isVisible()).forNoMoreThan(40).seconds(),
                 Click.on(CREATE_NEW_USER),
                 Click.on(USERNAME),
                 Enter.theValue(userName).into(USERNAME),
@@ -55,7 +55,7 @@ public class Register implements Task {
                 Enter.theValue(dataRegisterList.get(CERO).getPostalCode()).into(POSTAL_CODE),
                 Click.on(CLICK_AGREE),
                 Click.on(CLICK_REGISTER),
-                WaitUntil.the(QUESTIONS_USER, WebElementStateMatchers.isVisible()).forNoMoreThan(20).seconds());
+                WaitUntil.the(QUESTIONS_USER, isVisible()).forNoMoreThan(20).seconds());
 
         userCreate.put("USERNAME",userName);
         DataRegisterList.setRsCreateUser(userCreate);

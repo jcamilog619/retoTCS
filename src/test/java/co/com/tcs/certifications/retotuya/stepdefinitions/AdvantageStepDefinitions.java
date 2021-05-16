@@ -5,7 +5,7 @@ import co.com.tcs.certifications.retotuya.model.DataList;
 import co.com.tcs.certifications.retotuya.model.DataListProduct;
 import co.com.tcs.certifications.retotuya.model.DataRegisterList;
 import co.com.tcs.certifications.retotuya.questions.TheAnswer;
-import co.com.tcs.certifications.retotuya.questions.TheAnswerOfTheForm;
+import co.com.tcs.certifications.retotuya.questions.TheAnswerOfTheInfo;
 import co.com.tcs.certifications.retotuya.tasks.*;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
@@ -57,6 +57,11 @@ public class AdvantageStepDefinitions {
         theActorInTheSpotlight().should(seeThat(TheAnswer.is().login()).orComplainWith(ValidateException.class, ValidateException.LOGIN_ERROR));
     }
 
+    @Then("^he should see the failed message (.*)$")
+    public void heShouldSeeTheFailedMessage(String word) {
+        theActorInTheSpotlight().should(seeThat(TheAnswerOfTheInfo.is(word).failedLog()).orComplainWith(ValidateException.class, ValidateException.LOGIN_ERROR));
+    }
+
     @Then("^should see the result of the created user$")
     public void shouldSeeTheResultOfTheCreatedUser() {
         theActorInTheSpotlight().should(seeThat(TheAnswer.is().createUser()).orComplainWith(ValidateException.class, ValidateException.CREATE_USER_ERROR));
@@ -65,13 +70,13 @@ public class AdvantageStepDefinitions {
 
     @Then("^should see the result of contact us (.*)$")
     public void shouldSeeTheResultOfContactUs(String word) {
-        theActorInTheSpotlight().should(seeThat(TheAnswerOfTheForm.is(word)).orComplainWith(ValidateException.class, ValidateException.LOGIN_ERROR));
+        theActorInTheSpotlight().should(seeThat(TheAnswerOfTheInfo.is(word).contactForm()).orComplainWith(ValidateException.class, ValidateException.CONTACT_US_ERROR));
     }
 
 
     @Then("^should see the result of adding the product$")
     public void shouldSeeTheResultOfAddingTheProduct() {
-        theActorInTheSpotlight().should(seeThat(TheAnswer.is().addpost()).orComplainWith(ValidateException.class, ValidateException.LOGIN_ERROR));
+        theActorInTheSpotlight().should(seeThat(TheAnswer.is().addpost()).orComplainWith(ValidateException.class, ValidateException.ADD_PRODUCT_ERROR));
     }
 
 
